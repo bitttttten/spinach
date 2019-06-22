@@ -1,0 +1,27 @@
+{
+	"additionalProperties": true,
+	"properties": {
+	  "name": {
+		"anyOf": [
+		  {
+			"type": "string"
+		  },
+		  {
+			"instanceof": "Function"
+		  }
+		]
+	  },
+	  "emitFile": {
+		"type": "boolean"
+	  }
+	},
+	"errorMessages": {
+	  "name": "should be {String} or {Function}",
+	  "outputPath": "should be {String} or {Function}",
+	  "publicPath": "should be {String} or {Function}",
+	  "context": "should be {String}",
+	  "emitFile": "should be {Boolean})",
+	  "regExp": "should be {String} or {RegExp}"
+	},
+	"type": "object"
+  }

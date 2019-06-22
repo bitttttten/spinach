@@ -1,0 +1,37 @@
+{
+  "name": "spinach",
+  "version": "0.0.0",
+  "description": "Loader for teeny tiny images",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitten/spinach.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader"
+  ],
+  "author": "bitttttten <bitttttten@googlemail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitten/spinach/issues"
+  },
+  "homepage": "https://github.com/bitten/spinach#readme",
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "dependencies": {
+    "loader-utils": "^1.2.3",
+    "schema-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "prettier": "^1.18.2",
+    "webpack": "^4.35.0"
+  }
+}
