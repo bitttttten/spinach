@@ -1,27 +1,52 @@
 {
-	"additionalProperties": true,
-	"properties": {
-	  "name": {
-		"anyOf": [
-		  {
-			"type": "string"
-		  },
-		  {
-			"instanceof": "Function"
-		  }
-		]
-	  },
-	  "emitFile": {
-		"type": "boolean"
-	  }
-	},
-	"errorMessages": {
-	  "name": "should be {String} or {Function}",
-	  "outputPath": "should be {String} or {Function}",
-	  "publicPath": "should be {String} or {Function}",
-	  "context": "should be {String}",
-	  "emitFile": "should be {Boolean})",
-	  "regExp": "should be {String} or {RegExp}"
-	},
-	"type": "object"
-  }
+  "additionalProperties": true,
+  "properties": {
+    "name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "instanceof": "Function"
+        }
+      ]
+    },
+    "jpeg": {
+      "progressive": {
+        "type": "boolean"
+      },
+      "arithmetic": {
+        "type": "boolean"
+      }
+    },
+    "png": {
+      "speed": {
+        "type": "number"
+      },
+      "strip": {
+        "type": "boolean"
+      },
+      "quality": {
+        "type": "number"
+      },
+      "dithering": {
+        "anyOf": [{ "type": "boolean" }, { "type": "number" }]
+      },
+      "posterize": {
+        "type": "number"
+      },
+      "verbose": {
+        "type": "number"
+      }
+    }
+  },
+  "errorMessages": {
+    "name": "should be {String} or {Function}",
+    "outputPath": "should be {String} or {Function}",
+    "publicPath": "should be {String} or {Function}",
+    "context": "should be {String}",
+    "emitFile": "should be {Boolean})",
+    "regExp": "should be {String} or {RegExp}"
+  },
+  "type": "object"
+}
