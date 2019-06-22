@@ -58,21 +58,27 @@ export default function loader(content) {
 
 		const buffer = Buffer.from(`"${content.toString('base64')}"`, "base64")
 
-		const files = await imagemin.buffer(buffer, {
-			plugins: [
-				jpegPlugin,
-				pngPlugin,
-			]
-		});
-	
-		console.log(files);
+		try {
 
-		return `module.exports = ${publicPath};`
+			const files = await imagemin.buffer(buffer, {
+				plugins: [
+					jpegPlugin,
+					pngPlugin,
+				]
+			});
+
+			return `module.exports = ${publicPath};`
+		}
+		catch(e) {
+			return e
+		}
     }
 
     run().then((result) => {
 		callback(null, result)
-    })
+    }).catch((err) => {
+		callback(err)
+	})
 }
 
 export const raw = true;
