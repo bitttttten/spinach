@@ -8,9 +8,9 @@ import validateOptions from 'schema-utils';
 
 import schema from './options.json'
 
-const jpegPlugin = imageminJpegtran(),
-const pngPlugin = imageminPngquant({
-	quality: [0.6, 0.8]
+const defaultJpegPlugin = imageminJpegtran(),
+const defaultPngPlugin = imageminPngquant({
+	quality: [0.7, 0.9]
 })
 
 export default function loader(content) {
@@ -58,7 +58,16 @@ export default function loader(content) {
 
 		const buffer = Buffer.from(`"${content.toString('base64')}"`, "base64")
 
+
 		try {
+			const jpegPlugin = options.jpeg
+				? imageminJpegtran(options.jpeg)
+				: defaultJpegPlugin
+
+			const pngPlugin = options.png
+				? defaultPngPlugin(options.png)
+				: defaultPngPlugi
+
 
 			const files = await imagemin.buffer(buffer, {
 				plugins: [
