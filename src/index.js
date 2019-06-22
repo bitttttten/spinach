@@ -14,46 +14,46 @@ const defaultPngPlugin = imageminPngquant({
 })
 
 export default function loader(content) {
-    const callback = this.async();
+	const callback = this.async();
 	this.cacheable && this.cacheable();
 	this.value = content;
 
-    const options = loaderUtils.getOptions(this) || {};
+	const options = loaderUtils.getOptions(this) || {};
 
-    validateOptions(schema, options, 'Spinach');
+	validateOptions(schema, options, 'Spinach');
 
 	const context = options.context || this.rootContext;
 	
-    async function run() {
-        const url = loaderUtils.interpolateName(this, options.name, {
-            context,
-            content,
-        });
+	async function run() {
+		const url = loaderUtils.interpolateName(this, options.name, {
+			context,
+			content,
+		});
 
-        let outputPath = url;
+		let outputPath = url;
 
-        if (options.outputPath) {
-            if (typeof options.outputPath === 'function') {
-                outputPath = options.outputPath(url, this.resourcePath, context);
-            } else {
-                outputPath = path.posix.join(options.outputPath, url);
-            }
-        }
+		if (options.outputPath) {
+			if (typeof options.outputPath === 'function') {
+				outputPath = options.outputPath(url, this.resourcePath, context);
+			} else {
+				outputPath = path.posix.join(options.outputPath, url);
+			}
+		}
 
-        let publicPath = `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
+		let publicPath = `__webpack_public_path__ + ${JSON.stringify(outputPath)}`;
 
-        if (options.publicPath) {
-            if (typeof options.publicPath === 'function') {
-                publicPath = options.publicPath(url, this.resourcePath, context);
-            } else {
-                publicPath = `${
+		if (options.publicPath) {
+			if (typeof options.publicPath === 'function') {
+				publicPath = options.publicPath(url, this.resourcePath, context);
+			} else {
+				publicPath = `${
 				options.publicPath.endsWith('/')
 					? options.publicPath
 					: `${options.publicPath}/`
 				}${url}`;
-            }
+			}
 
-            publicPath = JSON.stringify(publicPath);
+			publicPath = JSON.stringify(publicPath);
 		}
 
 		const buffer = Buffer.from(`"${content.toString('base64')}"`, "base64")
@@ -81,11 +81,11 @@ export default function loader(content) {
 		catch(e) {
 			return e
 		}
-    }
+	}
 
-    run().then((result) => {
+	run().then((result) => {
 		callback(null, result)
-    }).catch((err) => {
+	}).catch((err) => {
 		callback(err)
 	})
 }
